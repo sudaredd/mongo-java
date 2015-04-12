@@ -1,10 +1,6 @@
 package com.dao;
 
 import java.net.UnknownHostException;
-import java.util.List;
-import java.util.Set;
-
-
 
 import org.apache.log4j.Logger;
 
@@ -32,26 +28,21 @@ public class MongoDBUtil {
 		 return db;
 	}
 	
-	public static void insert() {
-		
+	public static void insert(DBCollection coll) {
+		 //insert a row
+		 BasicDBObject doc = new BasicDBObject("name", "darsan").
+                append("type", "emp").
+                append("count", 1)
+               .append("info", new BasicDBObject("x", 203).append("y", 102));
+		 coll.insert(doc);
 	}
 
 	public static void main(String[] args) throws UnknownHostException {
-
 		 MongoClient mongoClient = getClient();
 		 DB db =connection(mongoClient);
-		 
 		 DBCollection coll = db.getCollection("users");
-
-		 //insert a row
-		 
-		 BasicDBObject doc = new BasicDBObject("name", "sherif").
-                 append("type", "emp").
-                 append("count", 1)
-                .append("info", new BasicDBObject("x", 203).append("y", 102));
-
-		 coll.insert(doc);
-		 System.out.println(coll.getCount());
+		 insert(coll);
+		 log.info("number of records:"+coll.getCount());
 
 	}
 
