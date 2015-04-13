@@ -1,7 +1,7 @@
-package com.dao;
+package com.mongo;
 
 import static org.junit.Assert.*;
-import static com.dao.MongoDBUtil.*;
+import static com.mongo.MongoDBUtil.*;
 
 import java.net.UnknownHostException;
 

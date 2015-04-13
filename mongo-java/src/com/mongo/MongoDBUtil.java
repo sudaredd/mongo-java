@@ -1,4 +1,4 @@
-package com.dao;
+package com.mongo;
 
 import java.net.UnknownHostException;
 
